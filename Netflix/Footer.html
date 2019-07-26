@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+
+    <style>
+        body {
+            background-color: #221F1F;
+            color: white;
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .footerelement {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        #btnService {
+            color: gray;
+            font-weight: bold;
+            border-color: gray;
+        }
+
+        .carousel {
+            height: 120px;
+            width: 100%;
+            overflow: hidden;
+
+        }
+
+        #bg-video {
+            /* top: 0px;
+    left: 0px;
+    position: absolute; this all will play background video*/
+            width: 100%;
+           
+           
+            padding: 0px;
+           height: 350px;
+        }
+
+        .jumbotron{
+            background-color:  #221F1F;
+            padding: 0px;
+          height: 350px;
+        }
+
+        h2{
+            margin-top: 15px;
+        }
+
+        /* .carousel-item img {
+            padding: 0;
+            margin-right: 0;
+            margin-left: 0;
+            /*added this*/
+        */
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #221F1F">
+        <a class="navbar-brand" href="#">
+            <img src="./Logo/LOGO TRANSPARENT.png" alt="netflix logo" width="70" height="70" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" id="textNav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TV Shows</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Recently Added</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My List</a>
+                </li>
+            </ul>
+            <!--  <nav class="navbar" id="navForm">
+                <form class="form-inline d-none">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="formInline">
+                </form>
+              </nav> -->
+            <span class="nav-item">
+                <a id="btnSearch" class="nav-link" href="#">
+                    <img src="./Images/search icon.png" alt="search" width="26px" height="auto" /></a>
+            </span>
+            <span class="nav-item">
+                <a class="nav-link" style="color:white" href="#">KIDS</a>
+            </span>
+            <span class="nav-item">
+                <a href="#" id="navbarBellMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img src="./Images/bell.png" alt="bell" width="30" height="30" />
+                </a>
+            </span>
+            <span class="nav-item dropdown ml-3 mr-5">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="./Images/profile image.png" alt="profile image" width="50px" height="auto" />
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdownMenu">
+                    <a class="dropdown-item" href="profile.html">
+                        <img src="./Images/profile image.png" alt="bell" width="40px" height="auto" />Krzy</a>
+                    <a class="dropdown-item" href="#">
+                        <img src="./Images/profile image.png" alt="bell" width="40px" height="auto" />Kids</a>
+                    <a class="dropdown-item" href="#">Manage Profiles</a>
+                    <hr>
+                    </hr>
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="#">Help Center</a>
+                    <a class="dropdown-item" href="#">Sign out of Netflix</a>
+                </div>
+            </span>
+        </div>
+    </nav>
+  
+        <div class="container">
+            <video id="bg-video" style="width:100%;" autoplay="true" loop="loop" controls="controls" preload="metadata" muted="muted">
+                <source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.ogg"
+                    type="video/ogg" />
+            </video>
+        </div>
+  
+
+    <div class="container">
+        <div>
+                <h2>Movie Shows</h2>
+        </div>
+            
+        <div id="recipeCarousel" class="carousel slide " data-ride="carousel">
+              
+            <div class="carousel-inner " role="listbox">
+               
+                <div class="carousel-item  active">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie1.jpg"></div>
+                        <div class="col-sm-6 col-md-4  col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie2.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie3.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie4.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie5.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie6.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie7.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie8.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie9.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie10.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie12.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie12.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4  no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie13.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid w-100 "
+                                src="Images/movie14.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie15.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie16.jpg"></div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+
+        <div>
+                <h2>Movie Shows</h2>
+        </div>
+        <div id="recipeCarousel2" class="carousel slide mt-5 " data-ride="carousel">
+            <div class="carousel-inner " role="listbox">
+                <div class="carousel-item  active">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie1.jpg"></div>
+                        <div class="col-sm-6 col-md-4  col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie2.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie3.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie4.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie5.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie6.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie7.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie8.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid w-100 "
+                                src="Images/movie9.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie10.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie12.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie12.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie13.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie14.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie15.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie16.jpg"></div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#recipeCarousel2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#recipeCarousel2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <div>
+                <h2>Movie Shows</h2>
+        </div>
+        <div id="recipeCarousel3" class="carousel slide mt-5 " data-ride="carousel">
+            <div class="carousel-inner " role="listbox">
+                <div class="carousel-item  active">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie1.jpg"></div>
+                        <div class="col-sm-6 col-md-4  col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie2.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie3.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie4.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie5.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters "><img class="img-fluid  w-100"
+                                src="Images/movie6.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie7.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie8.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid w-100 "
+                                src="Images/movie9.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie10.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie12.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie12.jpg"></div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie13.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie14.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie15.jpg"></div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 no-gutters"><img class="img-fluid  w-100"
+                                src="Images/movie16.jpg"></div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#recipeCarousel3" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#recipeCarousel3" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+    </div>
+
+
+
+    </div>
+
+    <script>
+        window.onload = function () {
+
+            $("#recipeCarousel").carousel('pause');
+            $("#recipeCarousel2").carousel('pause');
+            $("#recipeCarousel3").carousel('pause');
+        }   
+    </script>
+
+
+    <footer class="container margin-left: 10%  mt-4">
+        <!-- <div class="foot">
+            <img class="mb-2 mt-5" src="./Images/fblogo.png" alt="" width="24" height="23">
+            <img class="mb-2 mt-5" src="./Images/twitter.png" alt="" width="24" height="23">
+            <img class="mb-2 mt-5" src="./Images/istagram.png" alt="" width="24" height="23">
+            <img class="mb-2 mt-5" src="./Images/youtube.png" alt="" width="24" height="30">
+        </div> -->
+        <div class="row">
+
+            <div class="col-12 col-md">
+                <!-- <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24"> -->
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Audio and Subtitles</a></li>
+                    <li><a class="text-muted" href="#">Media Center</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Contact Us</a></li>
+                    <button type="button" class="btn btn-outline-dark rounded-0 mt-4" id="btnService">Service
+                        Code</button>
+                    <small class=" mt-5 text-muted">&copy; 1997-2019 Netflix,Inc. {i-088e9b567d0202b22}</small>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Audio Description</a></li>
+                    <li><a class="text-muted" href="#">Investor Relations</a></li>
+                    <li><a class="text-muted" href="#">Legal Notices</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Help Center</a></li>
+                    <li><a class="text-muted" href="#">Jobs</a></li>
+                    <li><a class="text-muted" href="#">Cookie Preferences</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Gift Cards</a></li>
+                    <li><a class="text-muted" href="#">Terms of Use</a></li>
+                    <li><a class="text-muted" href="#" style="text-decoration: underline;">Corporate Information</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+body{
+    overflow: hidden;
+    background: rgb(46,63,87);
+background: linear-gradient(90deg, rgb(63, 86, 119) 0%, rgba(33,44,61,1) 42%, rgb(15, 21, 29) 100%);
+}
+
+/*SIDEBAR SECTION*/
+.navbar.fixed-left {
+    bottom: 0;
+    width: 232px;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+.navbar.fixed-left {
+    right: auto;
+}
+.navbar.fixed-left .navbar-collapse {
+    flex-grow: 0;
+    flex-direction: column;
+    width: 100%;
+}
+.navbar.fixed-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+}
+.navbar-expand-md {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}   
+.navbar.fixed-left .navbar-collapse .navbar-nav {
+
+    flex-direction: column;
+    width: 100%;
+}
+.bg-navbar{
+    background-color: black;
+}
+.navbar.fixed-left .navbar-collapse .navbar-nav  a{
+
+    color:rgb(145, 145, 145);
+}
+.navbar.fixed-left .navbar-collapse .navbar-nav  a:hover{
+
+ border:1px solid rgb(60, 211, 60);
+    border-width: 0px 0px 0px 4px;
+    font-weight: 600;
+    color: white;
+}
+.navbar.fixed-left .navbar-brand{
+
+    padding-top:20px;
+    padding-bottom:30px;
+    padding-left: 10px;
+}
+ul{
+    list-style-type: none;
+    padding-left:3px;
+}
+
+/*BUTTON SIDE BAR SECTION */
+
+.nav-btn{
+    margin-bottom:100px;
+}
+.btn{
+    margin-bottom:20px;
+}
+
+.nav-btn a{
+    padding-left:8px;
+    color:rgb(145, 145, 145);
+}
+.signup-Btn{
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+    border-radius: 20px;
+    width: 180px;
+}
+.login-Btn{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    width: 180px;
+}
+
+/* BOTTOM NAV BAR SECTION*/
+.custom-nav-bt{
+
+    display: none;
+    height:5.5rem;
+    background-color: #282828;
+
+}
+
+.bg-container{
+    
+    height:5.5rem;
+    background-color: #282828;
+}
+
+.playerControls a img{
+    width:14px;
+    margin-top:1rem;
+    margin-left:3rem;
+    filter:brightness(60%);
+}
+.playerControls a:hover{
+    filter:brightness(40%);
+}
+
+.progress{
+    color:white;
+    background-color: #414141;
+    margin-left:40px;
+    width:500px;
+    height:3px;
+}
+.playBar p{
+    margin-bottom:20px;
+    color:white;
+}
+
+/*MAIN PAGE SECTION*/
+
+.mainPage .mainLinks a{
+    color: white;
+    margin-left:50px;
+    font-weight:700;
+    font-size:12px;
+}
+
+.mainLinks{
+    margin-left:15rem;
+    margin-top:1.5rem;
+}
+.mainLinks a{
+    opacity:0.3;
+}
+
+.mainLinks a:hover{
+    text-decoration: none;
+    opacity:1;
+    border:1px solid rgb(60, 211, 60);
+    border-width: 0px 0px 3px 0px;
+           
+}
+
+.imgLinks{
+    padding-left:70px;
+    
+}
+.imgLinks a p{
+    padding-top:8px;
+    font-size: 12px;
+    color:white;
+    font-weight:700;
+}
+.imgLinks a:hover{
+
+    text-decoration: none;
+}
+
+.imgLinks a img:hover{
+
+    filter:brightness(50%);    
+}
+
+h2{
+    padding-left:4.5rem;
+    color:white;
+    font-weight: 700;
+    padding-top:50px;
+}
+.mainPage h3{
+    padding-top:30px;
+    padding-left:4.5rem;
+    color:white;
+    font-weight: 700;
+}
+
+.centering{
+    margin-left:14rem;
+}
+
+#albumShow, #searchShow{
+    display: none;
+}
+#albumShow .albumList h3{
+    font-weight: 700;
+    color: white;
+    padding-top:30px;
+}
+#searchShow .searchList h3{
+    font-weight: 700;
+    color:white;
+    padding-top: 20px;
+    opacity: 0.6;
+    padding-left: 1em;
+    text-transform: capitalize;
+}
+#searchBar{
+    width: 150%;
+    padding: 10px;
+   height: 80px;
+   background-color: #121212;
+   opacity: 0.4;
+   border: transparent;
+   font-size:60px;
+   color:white;
+}
+
+.searchList{
+    padding-left: 5px;
+}
+
+.scrollFlow{
+    overflow-y: scroll;
+    overflow-x: scroll;
+    height: 100vh;
+}
+
+
+#imgAlbum1{
+    width:100%;
+align-content: center;
+}
+
+
+.card
+{
+    margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+    width:100%;
+    height: 1000px; 
+    overflow: hidden;
+    background: rgb(46,63,87);
+background: linear-gradient(90deg, rgb(63, 86, 119) 0%, rgba(33,44,61,1) 42%, rgb(15, 21, 29) 100%);
+}
+
+.trackHover:hover {
+  height: 50px;  
+  padding: 5px;
+ background-color:black;
+ 
+}
+
+audio {
+   
+    height: 30px;
+  }
+    
+}
+#btnPlay{
+    width:150px;
+    font-weight: bold;
+    height: 50px;
+    border-radius: 50x;
+}
+
+
+
+ 

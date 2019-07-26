@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Movies!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #221F1F">
+        <a class="navbar-brand" href="#">
+            <img src="./Logo/LOGO TRANSPARENT.png" alt="netflix logo" width="70" height="70" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto" id="textNav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TV Shows</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Recently Added</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">My List</a>
+                </li>
+            </ul>
+            <!--  <nav class="navbar" id="navForm">
+                <form class="form-inline d-none">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="formInline">
+                </form>
+              </nav> -->
+            <span class="nav-item">
+                <a id="btnSearch" class="nav-link" href="#">
+                    <img src="./Images/search icon.png" alt="search" width="26px" height="auto" /></a>
+            </span>
+            <span class="nav-item">
+                <a class="nav-link" style="color:white" href="#">KIDS</a>
+            </span>
+            <span class="nav-item">
+                <a href="#" id="navbarBellMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img src="./Images/bell.png" alt="bell" width="30" height="30" />
+                </a>
+            </span>
+            <span class="nav-item dropdown ml-3 mr-5">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="./Images/profile image.png" alt="profile image" width="50px" height="auto" />
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdownMenu">
+                    <a class="dropdown-item" href="profile.html">
+                        <img src="./Images/profile image.png" alt="bell" width="40px" height="auto" />Krzy</a>
+                    <a class="dropdown-item" href="#">
+                        <img src="./Images/profile image.png" alt="bell" width="40px" height="auto" />Kids</a>
+                    <a class="dropdown-item" href="#">Manage Profiles</a>
+                    <hr>
+                    </hr>
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="#">Help Center</a>
+                    <a class="dropdown-item" href="#">Sign out of Netflix</a>
+                </div>
+            </span>
+        </div>
+    </nav>
+
+    <!-- Main section -->
+    <div class="container" >
+        <!-- <div class="row" id="currentMovies">
+            <h2></h2>
+            <div id="recipeCarousel" class="carousel slide " data-ride="carousel">
+                <div class="carousel-inner " role="listbox">
+                    <div class="carousel-item  active">
+                        <div class="row no-gutters" id="insideCOnatiner">
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div> -->
+        <!-- <div id="heading">
+                <h2></h2>
+        </div> -->
+        <div class="row no-gutters " id="currentMovies">
+               <h2  ></h2>
+               <div class="row" id="insideCOntaier">
+
+               </div>
+        </div>
+       
+    </div>
+
+    <script src="helper.js"></script>
+    <script>
+        window.onload = async () => {
+            var currentMovies = document.querySelector("#currentMovies");
+           // var heading=document.querySelector("h2");
+            
+            
+            var img = document.querySelector("#insideCOntaier");
+            var categories = await getAllCategories();
+            console.log(categories);
+            var movies = [];
+            categories.forEach(async (c1) => {
+                movies = await getMoviesByCategory(c1);
+               // console.log(movies);
+                var div = document.createElement("div");
+                var h2 = document.createElement("h2");
+               
+                div.classList.add("row","no-gutters","mt-4");
+                
+                movies.forEach((cm) => {
+                    console.log(cm._id);
+                  h2.innerHTML=cm.category;
+                 
+                  if(c1==h2.innerText)
+                  {
+                   // img.appendChild(cm.category); 
+                  }
+                  else
+                  {
+                    
+                  }
+                 // currentMovies.appendChild(heading);
+                   div.innerHTML += `
+                                    <div class="col-sm-6 col-md-4 col-lg-3">
+                                    <img class="img-fluid  w-100" src="${cm.imageUrl}" style="width:150px;height:150px">
+                                    <a href="addMoviesByCategory.html?id?category=${cm._id}${cm.category}">${cm.category}</a>
+                                     </div>
+                                     `;
+                                    
+                                     currentMovies.appendChild(div);
+                });
+               
+            });
+        }
+    </script>
+
+
+
+
+    <footer class="container margin-left: 10%  mt-4">
+        <div class="row">
+
+            <div class="col-12 col-md">
+                <!-- <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24"> -->
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Audio and Subtitles</a></li>
+                    <li><a class="text-muted" href="#">Media Center</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Contact Us</a></li>
+                    <button type="button" class="btn btn-outline-dark rounded-0 mt-4" id="btnService">Service
+                        Code</button>
+                    <small class=" mt-5 text-muted">&copy; 1997-2019 Netflix,Inc. {i-088e9b567d0202b22}</small>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Audio Description</a></li>
+                    <li><a class="text-muted" href="#">Investor Relations</a></li>
+                    <li><a class="text-muted" href="#">Legal Notices</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Help Center</a></li>
+                    <li><a class="text-muted" href="#">Jobs</a></li>
+                    <li><a class="text-muted" href="#">Cookie Preferences</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <ul class="list-unstyled text-small">
+
+                    <li><a class="text-muted" href="#">Gift Cards</a></li>
+                    <li><a class="text-muted" href="#">Terms of Use</a></li>
+                    <li><a class="text-muted" href="#" style="text-decoration: underline;">Corporate Information</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

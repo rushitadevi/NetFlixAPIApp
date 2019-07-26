@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to the backoffice</h1>
+    <h2>Create all the products that you like</h2>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="write here the product name" />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Details</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="brand">Brand</label>
+            <input type="text" class="form-control" id="brand" placeholder="write here the brand name" />
+          </div>
+
+          <div class="form-group">
+            <label for="imageUrl">Image URL</label>
+            <input type="text" class="form-control" id="imageUrl" placeholder="write here the imageUrl" />
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" placeholder="write here the imageUrl" />
+          </div>
+
+          <div class="form-group">
+            <input type="button" class="btn btn-primary" onclick="submitProduct()" value="Add Product" />
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-6" id="myProducts"></div>
+    </div>
+  </div>
+
+  <script>
+
+    var products = [];
+    var myHeaders = new Headers({
+      "Authorization": "Basic " + btoa("admin:supersecret"),
+      "Content-Type": "application/json"
+    });
+
+    window.onload = async () => {
+      var response = await fetch("https://strivetestapi.azurewebsites.net/api/product/", {
+        headers: myHeaders
+      });
+      products = await response.json();
+
+      document.querySelector("#myProducts").innerHTML = products.map(p => `<div class="row"> ${p.name} </div>`).join("");
+    };
+
+    submitProduct = async () => {
+      var myProduct = {
+        name: document.querySelector("#name").value,
+        description: document.querySelector("#description").value,
+        brand: document.querySelector("#brand").value,
+        price: document.querySelector("#price").value,
+        imageUrl: document.querySelector("#imageUrl").value,
+      };
+
+      var response = await fetch("https://strivetestapi.azurewebsites.net/api/product/", {
+        method: "POST",
+        body: JSON.stringify(myProduct),
+        headers: myHeaders
+      });
+
+      var productResponse = await response.json();
+      console.log(productResponse);
+    };
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

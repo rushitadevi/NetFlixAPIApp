@@ -1,0 +1,47 @@
+body{
+background-color: #373d45;
+}
+
+#button{
+    border: 1px solid rgb(88, 88, 88);
+    border-radius : 3px;
+    background-color: #eee;
+    float: right;   
+    margin-left: 10px;
+
+}
+
+#ddlSelect{
+    border-radius: 3px;
+}
+
+#options p{
+    display: inline;
+}
+
+#txtInput{
+    border-radius: 3px;
+background-color: #eee;
+color: black;
+font-weight: 600;
+}
+#options{
+ 
+       padding: 7px;
+        
+        background-color: #47506b;
+}
+
+#Main{
+    background-color: #9e9eab;
+}
+.text-container{
+    background-color: #eee;
+
+}
+
+.container{
+    border-radius: 6px;
+overflow: hidden;
+border: 2px solid #4e4860;
+}

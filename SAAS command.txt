@@ -1,0 +1,10 @@
+node -v
+npm node package manager 
+npm init
+ls
+npm i gulp
+npm i -g gulp
+npm i gulp-saas node-sass browser-sync
+gulp - package used for front end develpers
+eg - it helps to translate SAAS file to css
+node saas & gulp saas is compilier

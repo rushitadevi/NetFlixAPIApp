@@ -1,0 +1,327 @@
+<!-- <!DOCTYPE html> 
+<html>
+  <head></head>
+  <body>
+    <h1>Start from your previous Spotify Exercise.</h1>
+
+    <p>
+      The goal of this exercise is to fetch data from the API instead of having
+      them "wired up" in the page.
+    </p>
+
+    <p>
+      Generate automatically 3 lists based on the "search API" response
+    </p>
+    <ul>
+      <li>es.: https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem</li>
+      <li>es.: https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica</li>
+      <li>es.: https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth</li>
+    </ul>
+
+    <h3>
+      Load them during page load, and create the collections based on the API
+      response.
+    </h3>
+
+    <h4>
+      [EXTRA] Make the central part of the page scrollable both horizontally and
+      vertically
+    </h4>
+
+    <h4>
+        [EXTRA] Add a "List albums" button. When pressed, he should create and display a list of albums on the page
+    </h4>
+
+    <h4>
+        [EXTRA] Add a "Count Unique" button. When pressed, he should log the number of unique albums on the page
+    </h4>
+
+    <h4>
+      [EXTRA] Add a search button to change the API query
+    </h4>
+  </body>
+</html> -->
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+  <style>
+    #Main {
+      max-width: 100%;
+    }
+
+    #Right {
+      background-image: linear-gradient(to right bottom, rgb(38, 77, 115), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 90%);
+      color: white;
+
+      padding-left: 100px;
+    }
+
+    #left{
+      color:wheat;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="Main" class="container-fluid">
+    <div class="row" id="content">
+      <div id="left" class="col-md-2" style=" background-color:black;">
+          <div class="position-fixed">
+              <div class="row">
+                  <div class="col text-center mt-4 mb-auto p-2 bd-highlight">
+                      <!-- <img id="logoImg" src="./logo/Spotify_Logo_RGB_White.png"> -->
+                  </div>
+                  <ol>
+                      <li class="nostyle">
+                          <i class="fas fa-home">&nbsp;&nbsp; &nbsp; Home </i>
+                      </li>
+                      <li class="nostyle">
+                          <i class="fas fa-search" data-target="#searchText" >&nbsp;&nbsp; &nbsp;Search</i>
+                      </li>
+                      <li class="nostyle">
+                              <i class="fas fa-book-reader">&nbsp;&nbsp; &nbsp;Your Library </i>
+                      </li>
+                  </ol>
+              </div>
+          </div>
+      </div>
+      <div id="Right" class="col-md-10">
+          <nav class="navbar navbar-expand-lg navbar-dark  ">
+              <button class="navbar-toggler" type="button" data-toggle="collapse"
+                  data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                  aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+                  <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
+                          <a class="nav-link" href="#main">TRENDING <span class="sr-only">(current)</span></a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#deals">PODCAST</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#WelSummer">MOODS AND GENRES</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#WelSummer">NEW RELEASES</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="#WelSummer">DISCOVER</a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+        
+        <h2 id="h2"></h2>
+        <div id="rightCol" class="row">
+        </div>
+        <h2 id="h3"></h2>
+        <div id="rightCol2" class="row">
+        </div>
+        <div class="modal fade" id="searchText" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- <div class="row">
+            <input type="text" id="title" placeholder="Title" />
+            <input type="file" class="form-control-file" id="fileImage">
+            <input  id="btnUpload" class="btn btn-primary" type="button  " text="List Albums" value="List Albums" onclick="createListAlbum()">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      //console.log("hii");
+
+      var headers1 = new Headers({
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387"
+      });
+
+      var myInit = {
+        method: 'GET',
+        headers: headers1
+
+      };
+
+      fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", myInit)
+
+
+        // fetch("https://deezerdevs-deezer.p.rapidapi.com/album/{id}", {
+        //   method: "GET",headers:{headers1}
+        // })
+        .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+
+        .then(function (posts) {
+          //console.log(posts.data[0]);
+          var div = document.querySelector("#rightCol");
+          var h2=document.querySelector("#h2");
+          for (var i = 0; i < 20; i++) {
+        //    console.log(posts.data[i].album.cover);
+                h2.innerHTML =`<h2>${posts.data[i].artist.name}</h2>`;
+            //foreach post, we create a new div with title and body
+            div.innerHTML += `<div class="col-md-4 id=${posts.data[i].id}" >
+                        
+                        
+                       <img src="${posts.data[i].album.cover}" >
+                       <p>${posts.data[i].title}</p>                       
+                       </div>
+                   `;
+          }
+        })
+
+        var headers1 = new Headers({
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387"
+      });
+
+      var myInit = {
+        method: 'GET',
+        headers: headers1
+
+      };
+
+      fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=metallica", myInit)
+
+        .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+
+        .then(function (posts) {
+          //console.log(posts.data[0]);
+          var div = document.querySelector("#rightCol2");
+          var h2=document.querySelector("#h3");
+          for (var i = 0; i < posts.data.length; i++) {
+            h2.innerHTML =`<h2>${posts.data[i].artist.name}</h2>`;
+
+            //foreach post, we create a new div with title and body
+            div.innerHTML += `<div class="col-md-4 id=${posts.data[i].id}" >
+                       <img src="${posts.data[i].album.cover}" >
+                       <p>${posts.data[i].title}</p>                       
+                       </div>
+                   `;
+          }
+        })
+
+
+
+    }
+
+   
+
+    function createListAlbum(){
+      //console.log("h");
+      var newEmployee = { //creating the object
+                name: document.querySelector("#title").value, //getting the value from the inputtext
+                age: document.querySelector("#fileImage").value,
+                
+            };
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/create?id=101", {
+                method: "POST", //POST method
+                body: JSON.stringify(newEmployee) //passing the newEmployee object as JSON
+            }).then(function(resp){
+                if (resp.ok){
+                    return resp.json();
+                }
+            }).then(function(json){
+                console.log(json);
+            })
+    }
+
+    function getNextData() {
+      var headers1 = new Headers({
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387"
+      });
+
+      var myInit = {
+        method: 'GET',
+        headers: headers1
+
+      };
+
+      fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=behemoth", myInit)
+
+        .then(function (response) {
+          if (response.ok) {
+            return response.json();
+          }
+        })
+
+        .then(function (posts) {
+        //  console.log(posts.data[0]);
+          var div = document.querySelector("#rightCol");
+          for (var i = 0; i < posts.data.length; i++) {
+            console.log(posts.data[i].album.cover);
+
+            //foreach post, we create a new div with title and body
+            div.innerHTML += `<div class="col-md-4 id=${posts.data[i].id}" >
+                       <img src="${posts.data[i].album.cover}" >
+                       <p>${posts.data[i].title}</p>                       
+                       </div>
+                   `;
+          }
+        })
+
+    }
+
+    function searchText(){
+      var getAllDataOnPage=document.querySelectorAll("div");
+      console.log(getAllDataOnPage);
+
+    }
+
+  </script>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

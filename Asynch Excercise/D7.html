@@ -1,0 +1,238 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">    
+
+  </head>
+
+  <body>
+
+        <div id ="options">
+                <select  id="ddlSelect">
+                  <option>name</option>
+                  <option>username</option>
+                  <option>email</option>
+                </select>
+                <input type="text" id="txtInput" onkeypress="filterData()" >
+                <p><strong>Sort By Name:</strong></p>
+                <select  id="ddlSelect" class="sortButton">
+                  <option onclick="ascendingOrder()">Ascending</option>
+                  <option onclick="descendingOrder()">Descending</option>
+                </select>
+    
+                <button id ="button" type="button" onclick="displayNames()">Extract Names</button> 
+                <button id ="button" type="button" onclick="displayAddress()">Extract Addresses</button> 
+              </div>
+
+    <div class="container mt-4">
+       <div class="row text-container">
+           <div class="col-md-4 text-custom n1">
+               <h3>Names</h3>
+           </div>
+           <div class="col-md-4 text-custom n2">
+                <h3>Username</h3>
+            </div>
+            <div class="col-md-4 text-custom n3">
+                    <h3>Email</h3>
+                </div>
+       </div> 
+      <div class="row" id="Main" >
+       </div>
+      </div>
+
+    <!-- Optional JavaScript -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+    window.onload = async () =>{
+      var main = document.querySelector("#Main");
+      var result = await loadAsync();
+     main.innerHTML += ` ${result.join("")} `;  
+    }
+    var arr=[];
+    loadAsync = async() =>{
+      var response = await fetch("https://jsonplaceholder.typicode.com/users");
+      var json=await response.json();
+      //console.log(json);
+      arr=json;
+      return json.map(users=>{
+        return `<div class="col-md-4 box">
+                <p>
+                <a>${users.name}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${users.username}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${users.email}</a>
+                </p>
+                </div>
+                `
+      });
+    }
+    filterData = async() =>{
+      var txtInput=document.querySelector("#txtInput").value;
+      var ddlInput=document.querySelector("#ddlSelect").value;
+      var nameHide = document.querySelector(".n1 h3");
+        var usernameHide = document.querySelector(".n2");
+        var emailHide = document.querySelector(".n3");
+        nameHide.innerText = "Names";
+         usernameHide.style.display = "";
+         emailHide.style.display = "";
+        var arrddl = arr.map((resultddl => resultddl[ddlInput]));
+    var filterName = arrddl.filter((checkProp) => checkProp.indexOf(txtInput) >= 0);
+     //console.log(filterName);
+        var filteredArr = arr.filter(arr1Item => filterName.includes(arr1Item[ddlInput]));
+       // console.log(filteredArr);
+      var main = document.querySelector("#Main");
+      main.innerHTML='';
+       filteredArr.forEach((Users) => {
+       main.innerHTML += `<div class="col-md-4 box">
+                <p>
+                <a>${Users.name}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${Users.username}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${Users.email}</a>
+                </p>
+                </div>`;
+       })  
+}
+    function displayNames(){
+        var nameHide = document.querySelector(".n1 h3");
+        var usernameHide = document.querySelector(".n2");
+        var emailHide = document.querySelector(".n3");
+        nameHide.innerText = "Names";
+         usernameHide.style.display = "none";
+         emailHide.style.display = "none";
+            var onlyNames = arr.map((arrInfo) => arrInfo.name);
+        var main = document.querySelector("#Main");
+      main.innerHTML='';
+      console.log(onlyNames);
+       onlyNames.forEach((Users) => {
+       main.innerHTML += `<div class="col-md-12 box">
+                <p>
+                <a>${Users}</a>
+                </p>
+                <hr>
+                </div>`;
+       })  
+    }
+    
+    function displayAddress(){
+        var nameHide = document.querySelector(".n1 h3");
+        var usernameHide = document.querySelector(".n2");
+        var emailHide = document.querySelector(".n3");
+        nameHide.innerText = "Address";
+         usernameHide.style.display = "none";
+         emailHide.style.display = "none";
+        var stringAddres;
+        var onlyAddress = arr.map((arrInfo) =>
+         stringAddres = arrInfo.address.street + ", " + 
+         arrInfo.address.suite + ", " + arrInfo.address.city + ", " +
+         "(" + arrInfo.address.zipcode +")" 
+         );
+        console.log(onlyAddress);
+        var main = document.querySelector("#Main");
+      main.innerHTML='';
+       onlyAddress.forEach((Users) => {
+       main.innerHTML += `<div class="col-md-12 box">
+                <p>
+                <a>${Users}</a>
+                </p>
+                <hr>
+                </div>`;
+       })  
+    } 
+   function ascendingOrder(){
+     var arrSort = arr.sort((a, b) => (a.name > b.name) ? 1 : -1);
+       console.log(arrSort);
+       var nameHide = document.querySelector(".n1 h3");
+        var usernameHide = document.querySelector(".n2");
+        var emailHide = document.querySelector(".n3");
+        nameHide.innerText = "Names";
+         usernameHide.style.display = "";
+         emailHide.style.display = "";
+       var main = document.querySelector("#Main");
+      main.innerHTML='';
+       arrSort.forEach((Users) => {
+       main.innerHTML += `<div class="col-md-4 box">
+                <p>
+                <a>${Users.name}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${Users.username}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${Users.email}</a>
+                </p>
+                </div>`;
+       })  
+   }
+   function descendingOrder(){
+var arrSort = arr.sort((a, b) => (a.name < b.name) ? 1 : -1);
+  console.log(arrSort);
+  var nameHide = document.querySelector(".n1 h3");
+        var usernameHide = document.querySelector(".n2");
+        var emailHide = document.querySelector(".n3");
+        nameHide.innerText = "Names";
+         usernameHide.style.display = "";
+         emailHide.style.display = "";
+  var main = document.querySelector("#Main");
+ main.innerHTML='';
+  arrSort.forEach((Users) => {
+  main.innerHTML += `<div class="col-md-4 box">
+                <p>
+                <a>${Users.name}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${Users.username}</a>
+                </p>
+                </div>
+                <div class="col-md-4 box">
+                <p>
+                <a>${Users.email}</a>
+                </p>
+                </div>`;
+  })  
+}
+    </script>
+
+  </body>
+
+</html>

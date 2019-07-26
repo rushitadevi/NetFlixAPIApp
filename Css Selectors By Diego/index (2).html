@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        .a ~ .b {
+            background-color: red;
+        }
+
+        #test > ul{
+            background: red;
+        }
+
+        div + ul {
+            background-color: green;
+        }
+    </style>
+
+  </head>
+  <body>
+    <div></div>
+    <div id="test">
+      <ul>
+        <li class="listItem">test</li>
+        <li class="listItem">test</li>
+        <li class="listItem">test</li>
+        <li class="listItem">test</li>
+      </ul>
+    </div>
+
+    <ul>
+      <li class="listItem">test</li>
+      <li class="listItem">test</li>
+      <li class="listItem">test</li>
+      <li class="listItem">test</li>
+    </ul>
+
+    <ul>
+        <li class="b">1rst</li>
+        <li class="a">second</li>
+        <li >third</li>
+        <li class="b">4</li>
+        <li class="b">5</li>
+        
+    </ul>
+  </body>
+</html>

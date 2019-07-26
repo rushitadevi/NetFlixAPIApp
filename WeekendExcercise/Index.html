@@ -1,0 +1,126 @@
+<html>
+<title>Hello</title>
+<h1>HTML Excercise</h1>
+<h2>Basic version</h2>
+
+<body>
+
+    <style>
+        body {
+            margin: auto;
+            max-width: 850px;
+            font-family: cursive;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border: 5px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+
+        }
+
+        td,
+        th {
+            border: 5px solid black;
+        }
+    </style>
+
+    <table id="actions">
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Surname
+        </th>
+        <th>
+            Email
+        </th>
+        <tr>
+            <td><a href="" target="_blank"> 1</a></td>
+            <td>Rushita</td>
+            <td>Devi</td>
+            <td>rushi.devi@gmail.com</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Viren</td>
+            <td>Devi</td>
+            <td>virendevi@gmail.com</td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>Ved</td>
+            <td>Devi</td>
+            <td>dev@gmail.com</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Hi</td>
+            <td>Hello</td>
+            <td>hi@gmail.com</td>
+        </tr>
+    </table>
+    <br>
+    <div>
+        <input type="text" id="textChange">
+        <input type="button" id="btnCHnage" value="Change Title">
+    </div>
+    <div>
+        <section>
+            <h2>Enrolled Students</h2>
+            <div id="Stud">
+
+            </div>
+        </section>
+    </div>
+
+    <script>
+        window.onload = function () {
+            console.log("hii");
+            var btn = document.getElementById("btnCHnage");
+            console.log(btn);
+            btn.addEventListener("click", changeTitle);
+        }
+
+        function changeTitle(event) {
+            var txtInput = document.getElementById("textChange").value;
+            var h1 = document.querySelector("h1");
+            var title = document.querySelector("title");
+            if (txtInput != "") {
+
+                h1.innerText = txtInput;
+                title.innerText = txtInput;
+            }
+            else {
+                alert("enter value to change title");
+            }
+        }
+
+
+          //Add an empty UL or DIV inside this new section
+         var div=document.getElementById("Stud");
+         console.log(div);
+         var newDiv= document.createElement("div");
+         div.appendChild(newDiv);
+
+         //Add an extra column to the Table named "actions"
+         var table=document.getElementById("actions");
+         
+         var td=table.//td added
+         td.innerText="Newce ll added";
+
+
+
+
+    </script>
+
+</body>
+
+</html>

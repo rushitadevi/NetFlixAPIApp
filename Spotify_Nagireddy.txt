@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- css -->
+
+  <link rel="stylesheet" href="stylesheet.css">
+
+  <!-- font- awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+</head>
+
+<body>
+
+  <!-- MENU -->
+
+  <section class="main-container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active p-2">
+            <a class="nav-link text-uppercase" href="#">Trending <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-uppercase" href="#">Podcast</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-uppercase" href="#">moods and genres</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-uppercase" href="#">new release</a>
+          </li>
+          <li class="nav-item p-2">
+            <a class="nav-link text-uppercase" href="#">discover</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Side navbar -->
+    <div class="container side-navbar ">
+      <div id="mySidenav" class="sidenav" id="sidenav">
+        <a href="#" class="header-logo pb-3"><img src="/assets/logo/Spotify_Logo_RGB_White.png" alt="" width="120"
+            height="35"></a>
+        <a href="profile.html"> <i class="fa fa-home pr-3"></i> Home</a>
+        <a href="#"> <i class="fa fa-search pr-3"></i>Search</a>
+        <a href="#"> <i class="fa fa-music pr-3"></i>Your Library</a>
+
+        <div class="sign-up-section p-3">
+          <button class="sign-up text-uppercase  bg-white mb-3"> sign up</button>
+          <button class="log-in text-uppercase mb-3"> Login </button>
+          <div class="cookies">
+            <p> <a class="d-inline-flex p-2" href="#"> </i>Cookies</a> <span class="text-white">|</span>
+              <a class="d-inline-flex p-2" href="#"> </i>Privacy</a>
+              <a class="d-inline-flex p-2" href="#"> </i>Policy</a> </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- !st container -->
+
+    <div class="container title-container mt-4 d-flex justify-content-start">
+      <h2 class="title text-uppercase text-white font-weight-bold"> #throwbackthursday</h2>
+    </div>
+    <div class="container mt-2">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2 ">
+          <div class="img-1 "></div>
+          <p class="text-white text-center pt-2">ItalianKaraoke</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-2"></div>
+          <p class="text-white text-center pt-2">Lyricists</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-3"></div>
+          <p class="text-white text-center pt-2">italy's frequent Rotation</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-4"></div>
+          <p class="text-white text-center pt-2">OOs Italy</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-5"></div>
+          <p class="text-white text-center pt-2">Cocktail Hour</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-6"></div>
+          <p class="text-white text-center pt-2">I love my 90's hip-hop</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2nd container -->
+    <div class="container title-container mt-4 d-flex justify-content-start">
+      <h2 class="title text-white font-weight-bold"> Classifiche</h2>
+    </div>
+    <div class="container mt-2">
+      <div class="row">
+
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-7"></div>
+          <p class="text-white text-center pt-2">Top 50-Italy</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-8"></div>
+          <p class="text-white text-center pt-2">Top 50-Global</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-9"></div>
+          <p class="text-white text-center pt-2">Viral 50-Global</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class=" img-10"></div>
+          <p class="text-white text-center pt-2">Viral 50-Global</p>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+            <!-- footer -->
+          <div class=" footer-section p-2">
+            <a class="d-inline-flex p-3  "><img src="/assets/playerButtons/Shuffle.png" alt="" height="10" width="10"></a>
+            <a class="d-inline-flex p-3 "><img src="/assets/playerButtons/Previous.png" alt="" height="10" width="10"></a>
+            <a class="d-inline-flex p-3"><img src="/assets/playerButtons/Play.png" alt="" height="10" width="10"></a>
+            <a class="d-inline-flex p-3"><img src="/assets/playerButtons/Next.png" alt="" height="10" width="10"></a>
+            <a class="d-inline-flex p-3"><img src="/assets/playerButtons/Repeat.png" alt="" height="10" width="10"></a>
+
+            <div id="progressbar">
+                <div></div>
+              </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<!--
+    WELCOME TO THE STRIVE TEAM GENERATOR!
+
+    The app is pretty straight forward:
+    - The user can add a list of names
+    - The user can set the number of teams
+    - Every time the user clicks on the "assign" button, a random name is placed in a team and removed from the list
+    - Each team should be inside a "column"
+    - [EXTRA] Create a button to remove an user from a team, putting him back in the main list
+    - [EXTRA] Create a button to reset the state of the app
+-->
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Team Generator</title>
+    <style>
+        h1 {
+            text-align: center;
+            font-family: cursive;
+        }
+
+        .list-group-item {
+            user-select: none;
+        }
+
+        .list-group input[type="checkbox"] {
+            display: none;
+        }
+
+        .list-group input[type="checkbox"]+.list-group-item {
+            cursor: pointer;
+        }
+
+        .list-group input[type="checkbox"]:checked+.list-group-item {
+            background-color: #0275D8;
+            color: #FFF;
+        }
+
+        .list-group input[type="checkbox"]:checked+.list-group-item:before {
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        window.onload = function () {
+            console.log("page loaded");
+            document.getElementById("btnsignIn").addEventListener("click", function addNameList(event) {
+                event.preventDefault()
+            });
+
+            document.getElementById("btnAssign").addEventListener("click", addTeams);
+
+
+        }
+
+        function addNameList() {
+
+            var txtName = document.getElementById("txtName").value;
+            var txtAdd = document.getElementById("txtAddr").value;
+            //console.log(txtName);
+            //  var photo=document.getElementById("uploadPhoto").value;
+            // console.log(photo);
+            var mainDiv = document.getElementById("divNames");
+           // console.log(mainDiv);
+            //  var child= document.createElement("a");
+
+            var a = document.createElement("a");
+            var item = txtName;
+            a.innerText = "Name - " + item + "   Address -" + txtAdd;
+
+            a.classList = "list-group-item list-group-item-danger";
+            //console.log(a.innerText);
+            document.getElementById("divNames").appendChild(a);
+            //  console.log(mainDiv);
+            //  mainDiv.appendChild(child);
+
+            //    var item = document.createTextNode("Pencil");
+            //var list = document.createElement("li");
+            //list.appendChild(item);
+            //document.getElementById("list").appendChild(list);
+
+
+
+
+        }
+
+        function addTeams() {
+           console.log("te");
+
+            var mainDiv = document.querySelectorAll("#divNames");
+
+            var grpNameList=document.getElementById("#listTeamlist-group my-4");
+            var checkedBoxes = document.querySelectorAll('input[name=CheckBoxInputName]:checked');
+            console.log(checkedBoxes);
+            
+            for(var i=0;i<mainDiv.length;i++)
+            {
+              var item= mainDiv;
+               
+                //console.log();
+              
+
+            var cardGrp = document.getElementById("cardGrp");
+            var div = document.createElement("div");
+            div.className = "card-deck mt-4";
+            cardGrp.appendChild(div);
+
+            // var div1 = document.createElement("div");
+            // div1.className =
+            //     div1.className = "card";
+            // div.appendChild(div1);
+
+
+            // var div2 = document.createElement("div");
+            // div2.className = "card-body";
+            // div1.appendChild(div2);
+
+
+            var h5 = document.createElement("h5");
+            h5.className = "card-title";
+            var txt=item[i].textContent.substring(0);
+            console.log(txt);
+            h5.innerText = txt;
+            div.appendChild(h5);
+
+            var p = document.createElement("p");
+            p.className = "card-text";
+            p.innerText = item[i].textContent.substring(item[i].textContent.lastIndexOf('A'));
+            div.appendChild(p);
+            cardGrp.appendChild(div);
+
+            }
+        }
+
+    </script>
+
+
+
+    <h1>Strive Team Generator!</h1>
+    <div class="container">
+        <div class="card card-body">
+            <h2>Add Strivers</h2>
+            <form>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" id="txtName" placeholder="Name">
+                </div>
+                <!--<div class="form-group">
+                    <label>Select Team </label>
+                    <select multiple class="form-control" id="teamId">
+                        <option>Team 1 (HTML+BootStrap)</option>
+                        <option>Team 2 (HTML+CSS)</option>
+                        <option>Team 3 (.Net)</option>
+                        <option>Team 4 (Java)</option>
+                    </select>
+                </div> -->
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea class="form-control" id="txtAddr" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" id="btnsignIn" onclick="addNameList()">Sign in</button>
+            </form>
+        </div>
+        <!--END OF FORM 1-->
+        <div class="list-group" id="divNames">
+        </div>
+
+        <div class="list-group my-4" id="listTeam">
+            <h2>Slect Teams</h2>
+            <input type="checkbox" name="CheckBoxInputName" value="Value1" id="CheckBox1" />
+            <label class="list-group-item" for="CheckBox1">Team 1(HTML+CSS) </label>
+
+            <input type="checkbox" name="CheckBoxInputName" value="Value2" id="CheckBox2" />
+            <label class="list-group-item" for="CheckBox2">Team 2(JAVA)</label>
+
+            <input type="checkbox" name="CheckBoxInputName" value="Value3" id="CheckBox3" />
+            <label class="list-group-item" for="CheckBox3">Team 3(.NET)</label>
+
+            <input type="checkbox" name="CheckBoxInputName" value="Value4" id="CheckBox4" />
+            <label class="list-group-item" for="CheckBox4">Team 4(SQL server + MongoDB)</label>
+
+        </div>
+        <div>
+            <button type="button" class="btn btn-dark" id="btnAssign">Assign Teams</button>
+        </div>
+       
+            <div class="row">
+                    <div class="col-lg-4 col-xs-6">
+            <div class="card-deck" id="cardGrp">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div><!-- end of container -->
+
+
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

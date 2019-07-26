@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>Album!!</title>
+</head>
+
+<body>
+    <h1></h1>
+    <div class="container-fluid">
+        <div class="col-2">
+            <nav
+                class="navbar navbar-expand-lg navbar-expand-md navbar-white bg-navbar fixed-left justify-content-between">
+                <div class="nav-container">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="logo/strivify.png" alt="Strivify_Logo" width="131" height="40" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <ul>
+                                <li>
+                                    <a class="nav-item nav-link" href="index.html"><i class="fas fa-home fa-lg"></i>
+                                        Home </a>
+                                </li>
+                                <li>
+                                    <a class="nav-item nav-link" href="#" onclick="showSearch()"><i
+                                            class="fas fa-search fa-lg"></i>
+                                        Search</a>
+                                </li>
+                                <li>
+                                    <a class="nav-item nav-link" href="#" onclick="showLibrary()"><i
+                                            class="fas fa-book-open fa-lg"></i>
+                                        Your Library</a>
+                                </li>
+                                <li>
+                                    <a class="nav-item nav-link" href="#" onclick="showAlbum()"><i
+                                            class="fas fa-bars fa-lg"></i></i>
+                                        Your Albums</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" nav-btn">
+                    <button class="btn signup-Btn" type="button">Sign Up</button>
+                    <button class="btn login-Btn" type="button">Login</button>
+                    <a href="#">Cookie Policy</a> |
+                    <a href="#"> Privacy</a>
+                </div>
+            </nav>
+
+        </div>
+
+    </div>
+    <div class="continer-fluid scrollFlow">
+        <div id="AlbumImg" class="row centering">
+            <div class="container mb-3">
+                <div class="row no-gutters " id="myContainer" >
+                    <div class="col-md-4 p-5" id="img-Container">
+                    </div>
+                    <div class="col-md-8 p-5">
+                        <div class="row" >
+                            <div id="track-List1" class="col-md-9">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid fixed-bottom bg-container">
+            <div class="row">
+                <div class="col-12 playerControls text-center">
+                    <a href="#">
+                        <img src="playerButtons/Shuffle.png" alt="shuffle">
+                    </a>
+                    <a href="#">
+                        <img src="playerButtons/Previous.png" alt="shuffle">
+                    </a>
+                    <a href="#">
+                        <img src="playerButtons/Play.png" alt="shuffle">
+                    </a>
+                    <a href="#">
+                        <img src="playerButtons/Next.png" alt="shuffle">
+                    </a>
+                    <a href="#">
+                        <img src="playerButtons/Repeat.png" alt="shuffle">
+                    </a>
+                </div>
+            </div>
+            <div class="row justify-content-center playBar py-3">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        var pageId = new URLSearchParams(document.location.search).get("id");
+        window.onload = function () {
+                        var headers = new Headers({
+                "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+                "X-RapidAPI-Key": "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387"
+            });
+
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=" + pageId, {
+                method: "GET", headers: headers
+            })
+                .then((response) => response.json())
+                .then((json) => {
+                    
+                    var myContainer = document.querySelector("#myContainer");
+                    var imgContainer = document.querySelector("#myContainer .col-md-4");
+                    var trackContainer = document.querySelector(".col-md-8 .row");
+                     var trackLIst1 = document.querySelector(".col-md-8 .row .col-md-9");
+                                         
+                    posts = json;
+                    for (var i = 0; i < 1; i++) {
+
+                        var div = document.createElement("div");
+                        div.innerHTML = `
+                       <img id="imgAlbum1"  src="${json.data[0].album.cover}" class="card-img img-fluid" alt="No Image">
+                       <div class="mt-4 text-center "><p  style="color:white;font-weight:bold; font-size:x-large;">${json.data[0].album.title}</P></div>
+                        <div  class="mt-4 text-center  "><button id="btnPlay" class="btn btn-success text-center" type="button">Play</button></div>
+                        `;
+                        imgContainer.appendChild(div);
+                        //another fetch to get tacks from album id
+                        //start
+                        fetch("https://deezerdevs-deezer.p.rapidapi.com/album/ "+ json.data[0].album.id, {
+                            method: "GET", headers: headers
+                        })
+                            .then((response) => response.json())
+                            .then((Tracks) => {
+                                
+                                for (var j = 0; j < 8; j++) {
+                                    var div2= document.createElement("div")
+                                    div2.innerHTML += `
+                                  <div  class=" trackHover justify-content-center" > <a href="#" class="card-title trackHover" >${Tracks.tracks.data[j].title}</a>
+                                    <p  >
+                                    <audio controls>
+                                     <source src=${Tracks.tracks.data[j].preview } type="audio/mpeg"; codecs=vorbis>
+                                    </audio>
+                                    <small  style="color:white;float:right;">${Tracks.tracks.data[j].duration}
+                                    </p>
+                                </div>
+
+                                    `;
+                                    trackLIst1.appendChild(div2);
+                                }
+                            });
+                        //end
+                    }
+                });
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

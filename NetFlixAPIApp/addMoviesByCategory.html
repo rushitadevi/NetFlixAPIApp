@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Add Movies!</title>
+</head>
+
+<body>
+
+    <div class="container pl-5 py-4 mt-5 bg-light">
+        <h1>Add Movies</h1>
+        <div class="row">
+            <div class="cold-md-12">
+                <form onsubmit="handleSubmit()">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Movie Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="ddlCategory" class="form-control">
+                            <option>Comedy</option>
+                            <option>Horror</option>
+                            <option>Romantic</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="txtdescription" rows="3" required></textarea>
+                        </div>
+                    <div class="form-group">
+                        <label for="movieImg">Upload Movie</label>
+                        <input type="text" class="form-control" id="uploadMovie" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Submit Movies" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="helper.js"></script>
+    <script>
+        window.onload =async()=>{
+            var id=new URLSearchParams(document.location.search).get("id");
+            var category=new URLSearchParams(document.location.search).get("category");
+            console.log(category);
+            if(id){         
+                 submit="Update Movies";     
+                document.querySelector(".btn").value=submit;
+                movie = await getMovieById(id);
+                console.log(movie);
+                document.querySelector("#name").value=movie.name;
+                document.querySelector("#txtdescription").value=movie.description;
+                document.querySelector("#ddlCategory").value=movie.category;               
+                document.querySelector("#uploadMovie").value =movie.imageUrl;
+            }
+        };
+
+        handleSubmit = () => {
+            event.preventDefault();
+            submitMovies();
+        };
+
+        submitMovies = async () => {
+            //fetching all the input elements from Page
+            var movie= {
+                name: document.querySelector("#name").value,
+                category: document.querySelector("#ddlCategory").value,
+                description :document.querySelector("#txtdescription").value,
+                imageUrl: document.querySelector("#uploadMovie").value,
+            };
+
+            console.log(movie);
+            await   submitMovieToserver(movie);
+            location.href="main.html";
+        }
+
+        
+         
+
+    </script>
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
